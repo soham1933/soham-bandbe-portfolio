@@ -1,0 +1,29 @@
+[
+  {
+    "role": "Intern",
+    "organisation": "Sagar (An) System",
+    "startDate": "Jun, 2024",
+    "endDate": "Present",
+    "experiences": ["creating portfolio using React.js framework."],
+    "imageSrc": "history/logo (1).jpg"
+  },
+  {
+    "role": "Backend developer",
+    "organisation": "Reelabs India",
+    "startDate": "feb, 2024",
+    "endDate": "feb, 2024",
+    "experiences": ["e-commerce website for Reelabs India in Industrial Hackathon 2023-24 at Vidyalankar Polytechnic.Worked on database, and backend handling.Maintained record in database using PHP and SQL queries."],
+    "imageSrc":"history/reel.png"
+  },
+  {
+    "role": "Backend developer",
+    "organisation": "Hertzsoft",
+    "startDate": "Apr, 2020",
+    "endDate": "Jun, 2020",
+    "experiences": [
+      "in Industrial Hackathon 2023-24 at Vidyalankar Polytechnic.Worked on database, and backend handling.Maintained record in database using PHP and SQL queries.",
+      ""
+    ],
+    "imageSrc": "history/hertz.png"
+  }
+]

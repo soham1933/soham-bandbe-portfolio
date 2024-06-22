@@ -1,0 +1,58 @@
+@import "../../vars.css";
+
+.container {
+  margin-top: 76px;
+  color: var(--color-text);
+  margin-left: 10%;
+  margin-right: 8%;
+  position: relative;
+}
+
+.title {
+  font-size: 35px;
+  font-weight: 700;
+  letter-spacing: 1.75px;
+  text-transform: uppercase;
+}
+.primg {
+  position: absolute;
+  top: 40%;
+  right: 0px; 
+  width: 200px; 
+  height: auto; 
+  animation: glow 2s infinite;
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 5px #fae60b);
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px #edfd06);
+    transform: scale(1.1);
+  }
+  100% {
+    filter: drop-shadow(0 0 5px #d9fd0c);
+    transform: scale(1);
+  }
+}
+.projects {
+  margin-top: 37px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  width: 100%;
+}
+@media screen and (max-width: 830px) {
+
+  .primg{
+    display: none;
+    
+  }
+}
+
+

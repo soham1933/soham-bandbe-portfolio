@@ -1,0 +1,131 @@
+@import "../../vars.css";
+
+.container {
+  position: relative;
+  background-color: rgba(235, 125, 28, 0.6);
+  border-radius: 15px;
+  padding: 73px;
+  margin-top: 129px;
+  z-index: 1;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.title {
+  color: var(--color-text);
+  font-size: 35px;
+  font-weight: 700;
+  letter-spacing: 1.75px;
+  text-transform: uppercase;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.aboutImage {
+  width: 35%;
+  animation: glow 2s infinite;
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 5px #17fa0b);
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px #17fd06);
+    transform: scale(1.1);
+  }
+  100% {
+    filter: drop-shadow(0 0 5px #0cfd40);
+    transform: scale(1);
+  }
+}
+
+
+.aboutItems {
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.aboutItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 20px;
+  list-style: none;
+  padding: 25px;
+  background-image: linear-gradient(
+    90deg,
+    rgba(235, 235, 62, 0.932) 0%,
+    rgba(239, 214, 71, 0) 100%
+  );
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
+  
+}
+.animationImg{
+  display: block;
+  
+}
+
+.aboutItem:hover {
+  background-size: 100% 100%;    
+ 
+
+}
+
+.aboutItem h3 {
+  font-size: 25px;
+  font-weight: 600;
+  padding-left: 20px;
+}
+
+.aboutItem p {
+  font-size: 25px;
+  padding-left: 20px;
+}
+.overlay {
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+  transition: .5s ease;
+  -webkit-transform: translate(0px,0px);
+  -ms-transform: translate(0px,0px );
+  transform: translate(0px, 0px);
+}
+
+.aboutItem:hover .overlay {
+  width: 35%;
+}
+
+@media screen and (max-width: 830px) {
+  .container {
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .aboutImage {
+    display: none;
+  }
+
+  .aboutItems {
+    margin-top: 29px;
+  }
+
+  .aboutItem {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

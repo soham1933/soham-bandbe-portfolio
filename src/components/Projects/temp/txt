@@ -1,0 +1,51 @@
+@import "../../vars.css";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #a4bc57 0%, #e4de38 100%);
+  box-shadow: 0 16px 14px 0 #2d2204;
+  padding: 18px 24px;
+  max-width: 300px;
+  position: relative; /* Ensure relative positioning for placing the image */
+}
+
+.image {
+  position: absolute;
+  top: 18px; /* Adjust as needed */
+  right: 24px; /* Adjust as needed */
+  width: 50px; /* Adjust width as needed */
+  height: 50px; /* Adjust height as needed */
+}
+
+.title {
+  font-size: 25px;
+  font-weight: 700;
+  margin-right: 60px; /* Add right margin to avoid overlap with image */
+}
+
+.description {
+  margin-top: 6px;
+  font-size: 25px;
+  font-weight: 400;
+  margin-right: 60px; /* Add right margin to avoid overlap with image */
+}
+
+.skills {
+  width: 100%;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+}
+
+.skill {
+  font-size: 25px;
+  font-weight: 400;
+  border-radius: 100px;
+  background: var(--color-dark);
+  padding: 2px 22px;
+}

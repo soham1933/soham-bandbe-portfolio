@@ -1,0 +1,120 @@
+@import "../../vars.css";
+
+.container {
+  color: var(--color-text);
+  margin-top: 120px;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100vw;
+  padding: 58px 10%;
+  gap: 10px;
+  position: relative; 
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px; 
+  height: auto; 
+  opacity: 0.8;
+  z-index: 1; 
+  animation: glow 2s infinite;
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 5px #000000);
+    
+  }
+  50% {
+    filter: drop-shadow(0 0 20px #000000);
+    
+  }
+  100% {
+    filter: drop-shadow(0 0 5px #000000);
+    
+  }
+
+}
+.overlay2{
+  position: absolute;
+  top: 0;
+  left: 70%;
+  width: 400px;
+  height: 350px; 
+  opacity: 0.8; 
+  z-index: 1; 
+  animation: glow 2s infinite;
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 5px #000000);
+    
+  }
+  50% {
+    filter: drop-shadow(0 0 20px #000000);
+    
+  }
+  100% {
+    filter: drop-shadow(0 0 5px #000000);
+    
+  }
+
+}
+
+.text h2 {
+  font-size: 80px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.text p {
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: none;
+  gap: 26px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.link a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 830px) {
+  .container {
+    flex-direction: column;
+    gap: 23px;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: small;
+  }
+
+  .links {
+    align-items: left;
+  }
+}

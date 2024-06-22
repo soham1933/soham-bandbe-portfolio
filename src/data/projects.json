@@ -1,0 +1,14 @@
+[
+  {
+    "title": "calculator",
+    "imageSrc": "projects/programming.png",
+    "description": "This is a project made to perform various arithmetic operations.",
+    "skills": ["html", "css", "JAVA"]
+  },
+  {
+    "title": "electricity bill generator",
+    "imageSrc": "projects/programming.png",
+    "description": "This is a project made to genererate the electricity bill with only meter reading",
+    "skills": ["Python"]
+  }
+]

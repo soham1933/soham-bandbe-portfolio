@@ -1,0 +1,56 @@
+
+import styles from'./App.module.css';
+import { About } from './components/About/About';
+import { Experience } from './components/Experience/Experience';
+import { Hero } from './components/Hero/Hero'
+import { Navbar } from './components/Navbar/Navbar'
+import { Projects } from './components/Projects/Projects';
+import { Contact } from './components/Contact/Contact'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+
+
+
+//navbar//
+
+
+
+
+
+function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element:<><Navbar/><Hero/><About/><Experience/><Projects/><Contact/></>
+    },
+    {
+      path: "/About",
+      element:<><Navbar/><About/></>
+    },
+    {
+      path: "/Contact",
+      element:<><Navbar/><Contact/></>
+    },
+        {
+      path: "/Experience",
+      element:<><Navbar/><Experience/></>
+    },
+    {
+      path: "/Projects",
+      element:<><Navbar/><Projects/></>
+    }
+  ])
+
+  return (
+
+  
+  
+    <div className={styles.App}>
+      
+  <RouterProvider router={router}/>
+
+    </div>
+  )
+}
+
+export default App
