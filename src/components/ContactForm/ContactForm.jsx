@@ -17,14 +17,14 @@ const ContactForm = () => {
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      const response = await fetch('https://soham-bandbe-portfolio.onrender.com/api/contact', {
+      const response = await fetch('http://localhost:8000/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(values),
       });
-  
+
       if (response.ok) {
         alert('Message sent successfully!');
         resetForm();
@@ -36,7 +36,6 @@ const ContactForm = () => {
       alert('An error occurred. Please try again later.');
     }
   };
-  
 
   return (
     <section className={styles.container}>
