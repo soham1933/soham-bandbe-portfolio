@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
-const cors = require('cors');
+const twilio = require('twilio');
 const Users = require('./src/Models/User');
 require('./src/Server/db/connection');  // Importing the connection setup
 
@@ -13,12 +13,6 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 app.use(express.json());
-
-// Add CORS configuration
-app.use(cors({
-  origin: 'https://soham-bandbe-portfolio.onrender.com/',  // Replace with your frontend domain
-  methods: ['GET', 'POST']
-}));
 
 // Define the port
 const port = process.env.PORT || 8000;
@@ -31,6 +25,9 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS,
   },
 });
+
+// Configure Twilio client
+const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 // POST route to handle contact form submissions
 app.post("/api/contact", async (req, res) => {
@@ -59,7 +56,21 @@ app.post("/api/contact", async (req, res) => {
         return res.status(500).send({ message: 'Error sending email', error });
       }
       console.log('Email sent: ' + info.response);
-      res.status(201).send(result);
+
+      // Send SMS notification to yourself (the administrator)
+      twilioClient.messages.create({
+        body: `New contact form submission from ${req.body.firstName} ${req.body.lastName}. Check your email for details.`,
+        from: process.env.TWILIO_PHONE_NUMBER,
+        to: process.env.YOUR_PHONE_NUMBER 
+      })
+      .then(message => {
+        console.log('SMS sent to yourself: ' + message.sid);
+        res.status(201).send(result);
+      })
+      .catch(error => {
+        console.error('Error sending SMS to yourself:', error);
+        res.status(500).send({ message: 'Error sending SMS to yourself', error });
+      });
     });
   } catch (error) {
     res.status(400).send({ message: error.message });
