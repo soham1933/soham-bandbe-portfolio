@@ -12,24 +12,28 @@ import VisitorCount from './components/CounterDisplay/VisitorCount';
 import { Provider } from 'react-redux';
 import ContactForm from './components/ContactForm/ContactForm';
 import Admin from './components/Admin/Admin';
-
 function App() {
+  
   return (
     <Provider store={store}> 
-      <div className={styles.App}>
-        <Router>
-          <Routes>
-            <Route path="/" element={<><Navbar /><Hero /><VisitorCount /><About /><Experience /><Projects /><Contact /></>} />
-            <Route path="/about" element={<><Navbar /><About /></>} />
-            <Route path="/contact" element={<><Navbar /><Contact /></>} />
-            <Route path="/experience" element={<><Navbar /><Experience /></>} />
-            <Route path="/projects" element={<><Navbar /><Projects /></>} />
-            <Route path="/api/contact" element={<><Navbar /><ContactForm /></>} />
-            <Route path="/admin" element={<Admin />} />
-          </Routes>
-        </Router>
+    <div className={styles.App}>
+      
+      <Router>
+        <Navbar />
+        <Routes>
+        
+          <Route path="/" element={<><Hero /><VisitorCount /><About /><Experience /><Projects /><Contact /></>} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/api/contact" element={<ContactForm />} />
+          <Route path="/admin" element={<Admin/>} />
+        </Routes>
+      </Router>
       </div>
-    </Provider>
+      </Provider>
+    
   );
 }
 

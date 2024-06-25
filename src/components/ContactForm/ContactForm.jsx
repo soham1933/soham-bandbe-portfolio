@@ -2,47 +2,47 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import styles from './SignupForm.module.css';
+import styles from './ContactForm.module.css';
 
-const SignupForm = () => {
+const validationSchema = Yup.object({
+  email: Yup.string().email('Invalid email address').required('Email is required'),
+  firstName: Yup.string().required('First Name is required'),
+  lastName: Yup.string().required('Last Name is required'),
+  mobile: Yup.string().matches(/^[0-9]{10}$/, 'Mobile number must be exactly 10 digits').required('Mobile number is required'),
+  message: Yup.string().required('Message is required'),
+});
+
+const ContactForm = () => {
   const navigate = useNavigate();
+
+  const handleSubmit = async (values, { resetForm }) => {
+    try {
+      const response = await fetch('http://localhost:8000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        alert('Message sent successfully!');
+        resetForm();
+      } else {
+        alert('Failed to send message.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('An error occurred. Please try again later.');
+    }
+  };
 
   return (
     <section className={styles.container}>
       <Formik
-        initialValues={{
-          email: '',
-          firstName: '',
-          lastName: '',
-          mobile: '',
-          message: ''
-        }}
-        validationSchema={Yup.object({
-          email: Yup.string().email('Invalid email address').required('Required'),
-          firstName: Yup.string().required('Required'),
-          lastName: Yup.string().required('Required'),
-          mobile: Yup.string()
-            .matches(/^[0-9]{10}$/, 'Mobile number must be exactly 10 digits')
-            .required('Required'),
-          message: Yup.string().required('Required')
-        })}
-        onSubmit={async (values, { setSubmitting }) => {
-          try {
-            await axios.post('http://localhost:5000/api/contact', {
-              name: `${values.firstName} ${values.lastName}`,
-              email: values.email,
-              message: values.message
-            });
-            alert('Your message has been sent!');
-            setSubmitting(false);
-            navigate('/');
-          } catch (error) {
-            console.error('There was an error!', error);
-            alert('There was an error submitting your form');
-            setSubmitting(false);
-          }
-        }}
+        initialValues={{ email: '', firstName: '', lastName: '', mobile: '', message: '' }}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
       >
         {({ isSubmitting }) => (
           <Form className={styles.formContainer}>
@@ -80,4 +80,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default ContactForm;
