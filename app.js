@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
+const cors = require('cors');
 const Users = require('./src/Models/User');
 require('./src/Server/db/connection');  // Importing the connection setup
 
@@ -12,6 +13,12 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 app.use(express.json());
+
+// Add CORS configuration
+app.use(cors({
+  origin: 'https://soham-bandbe-portfolio.onrender.com/',  // Replace with your frontend domain
+  methods: ['GET', 'POST']
+}));
 
 // Define the port
 const port = process.env.PORT || 8000;
