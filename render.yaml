@@ -1,0 +1,9 @@
+services:
+  - name: nodejs
+    env:
+      - key: PORT
+        value: "8000"
+      - key: MONGODB_URI
+        from_secret: true  # Use Render secrets for sensitive data
+    build_command: npm install --production
+    start_command: node app.js
