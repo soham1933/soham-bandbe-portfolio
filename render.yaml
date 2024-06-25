@@ -3,7 +3,7 @@ services:
     env:
       - key: PORT
         value: "8000"
-      - key: MONGODB_URI
+      - key: mongodb+srv://sohambandbe:soham1732@soham.toooher.mongodb.net/?retryWrites=true&w=majority&appName=soham
         from_secret: true  # Use Render secrets for sensitive data
     build_command: npm install --production
     start_command: node app.js
